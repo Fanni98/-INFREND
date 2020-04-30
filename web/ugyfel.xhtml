@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+xmlns:h="http://xmlns.jcp.org/jsf/html"  
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+    <title>Ügyfelek</title>  
+</h:head>  
+<h:body>  
+    <h:form>  
+        <center><h2><h:outputText value="Ügyfelek"/></h2></center>  
+        <p:dataTable binding="#{table}" value="#{ugyfel.ugyfelLista()}" var="u">  
+            <p:column>  
+                <f:facet name="header">ID</f:facet>  
+                <h:outputText value="#{u.id}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Név</f:facet>  
+                <h:outputText value="#{u.nev}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Lackím</f:facet>  
+                <h:outputText value="#{u.lakcim}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Telefonszám</f:facet>  
+                <h:outputText value="#{u.telefonszam}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Szigszám</f:facet>  
+                <h:outputText value="#{u.szigszam}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Státusz</f:facet>  
+                <h:outputText value="#{u.statusz}"/>  
+            </p:column>
+            <p:column>  
+                <f:facet name="header">Módosítás</f:facet>  
+                <p:commandButton action = "#{ugyfel.edit(u.id)}" value="Módosít"></p:commandButton>  
+            </p:column>
+            <p:column>  
+                <f:facet name="header">Aktiválás</f:facet>  
+                <p:commandButton action = "#{ugyfel.aktival(u.nev)}" value="Aktív"></p:commandButton>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Törlés</f:facet>  
+                <p:commandButton action = "#{ugyfel.delete(u.nev)}" value="Delete"></p:commandButton>  
+            </p:column>  
+        </p:dataTable>  
+        
+        <div>
+            <center><p:commandButton action = "create.xhtml?faces-redirect=true" value="Új ügyfél hozzáadása"></p:commandButton></center>
+        </div>
+    </h:form>  
+</h:body>
+</html>
+

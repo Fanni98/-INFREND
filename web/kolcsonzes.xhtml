@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+xmlns:h="http://xmlns.jcp.org/jsf/html"  
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+    <title>Kölcsönzések</title>   
+</h:head>  
+<h:body>  
+    <h:form> 
+    
+        <center><h2><h:outputText value="Kölcsönzések"/></h2> </center>  
+        
+        <p:dataTable binding="#{table}" value="#{kolcsonzes.kolcsonzesLista()}" var="k" >  
+            <p:column>  
+                <f:facet name="header">Ügyfél ID</f:facet>  
+                <h:outputText value="#{k.id}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">DVD sorszáma</f:facet>  
+                <h:outputText value="#{k.sorszam}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Kölcsönzés időpontja</f:facet>  
+                <h:outputText value="#{k.mikortol}"/>  
+            </p:column>  
+        </p:dataTable>
+
+        <p:dataTable binding="#{table1}" value="#{dvd.cimSorszam()}" var="k"   >  
+            <p:column>  
+                <f:facet name="header">Sorszám</f:facet>  
+                <h:outputText value="#{k.sorszam}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Cím</f:facet>  
+                <h:outputText value="#{k.cim}"/>  
+            </p:column>  
+        </p:dataTable>
+    
+        <p:dataTable binding="#{table2}" value="#{ugyfel.idNev()}" var="k">  
+            <p:column>  
+                <f:facet name="header">ID</f:facet>  
+                <h:outputText value="#{k.id}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Név</f:facet>  
+                <h:outputText value="#{k.nev}"/>  
+            </p:column>  
+        </p:dataTable>
+    
+    </h:form>  
+</h:body>  
+</html>
+

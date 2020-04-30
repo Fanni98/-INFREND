@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+xmlns:h="http://xmlns.jcp.org/jsf/html"  
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+    <title>Filmek</title>  
+</h:head>  
+<h:body>  
+    <h:form>   
+        
+        <p:dataTable binding="#{table}" value="#{dvd.dvdLista()}" var="d">    
+            <p:column>  
+                <f:facet name="header">Sorszám</f:facet>  
+                <h:outputText value="#{d.sorszam}"/>  
+            </p:column>  
+            <p:column>  
+                <f:facet name="header">Cím</f:facet>  
+                <h:outputText value="#{d.cim}"/>  
+                </p:column>  
+            <p:column>  
+                <f:facet name="header">Beszerzés dátuma</f:facet>  
+                <h:outputText value="#{d.beszerzesDatum}"/>  
+            </p:column>  
+            <p:column>    
+                <f:facet name="header">Státusz</f:facet>  
+                <h:outputText value="#{d.statusz}"/>  
+            </p:column>    
+        </p:dataTable>   
+    </h:form>  
+</h:body>  
+</html>

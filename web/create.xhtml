@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+xmlns:h="http://xmlns.jcp.org/jsf/html"  
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+    <title>Új ügyfel hozzáadása</title>    
+</h:head>  
+<h:body>  
+    <h:form>  
+
+        <h2 style="text-align: center"> Adja meg az adatokat </h2>  
+
+        <div style="text-align: center">
+            <p:outputLabel for="nev">Név</p:outputLabel>
+        </div>
+        <div style="text-align: center">
+            <p:inputText id="nev" value="#{ugyfel.nev}" required="true"/>
+        </div>
+        
+        <div style="text-align: center">
+            <p:outputLabel for="lakcim">Lakcím</p:outputLabel>
+        </div>
+        <div style="text-align: center">
+            <p:inputText id="lakcim" value="#{ugyfel.lakcim}" required="true"/>
+        </div>
+
+        <div style="text-align: center">
+            <p:outputLabel for="telefonszam">Telefonszám</p:outputLabel>
+        </div>
+        <div style="text-align: center">
+            <p:inputNumber id="telefonszam" value="#{ugyfel.telefonszam}" required="true" placeholder="20" maxlength="9"/>
+        </div>
+        
+        <div style="text-align: center">
+            <p:outputLabel for="szigszam" >Szigszám</p:outputLabel>
+        </div>
+        <div style="text-align: center">
+            <p:inputText id="szigszam" value="#{ugyfel.szigszam}" required="true" maxlength="8"/>
+        </div>
+ 
+        <div style="text-align: center">
+            <p:outputLabel for="statusz">Státusz</p:outputLabel>
+        </div>
+        <div style="text-align: center">
+            <p:inputText id ="statusz" value="#{ugyfel.statusz}" placeholder="aktív" required="true"/>
+        </div>
+
+        <div style="text-align: center">
+            <p:commandButton value="Save" action="#{ugyfel.save()}"  style="width: 80px;"></p:commandButton>
+        </div>
+  
+    </h:form>  
+</h:body>  
+</html>  
