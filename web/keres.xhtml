@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Keresés</title>
+    </h:head>
+    <h:body style="background-color: #173F5F">
+        
+        <h:form id="form">
+            
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:outputLabel>ID:</p:outputLabel>
+                </br>
+            </div>
+            
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:inputText value="#{ugyfel.id}"/>
+                </br>
+            </div>
+            
+            <div style="text-align: center">
+                <br>
+                    <p:commandButton value="Keresés" action="#{ugyfel.keresesId}" onclick="PF('dlg1').show();" update=":form:data" />
+                </br>
+            </div>
+            
+            <p:dialog widgetVar="dlg1" modal="true">
+                <p:dataTable id="data" value="#{ugyfel.values}" var="k">
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">ID</f:facet>  
+                        <h:outputText value="#{k.id}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Név</f:facet>  
+                        <h:outputText value="#{k.nev}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Lackím</f:facet>  
+                        <h:outputText value="#{k.lakcim}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Telefonszám</f:facet>  
+                        <h:outputText value="#{k.telefonszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Szigszám</f:facet>  
+                        <h:outputText value="#{k.szigszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Státusz</f:facet>  
+                        <h:outputText value="#{k.statusz}"/>  
+                    </p:column> 
+                </p:dataTable>   
+            </p:dialog>
+            
+            
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:outputLabel>Név:</p:outputLabel>
+                </br>
+            </div>
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:inputText value="#{ugyfel.nev}"/>
+                </br>
+            </div>
+            <div style="text-align: center">
+                <br>
+                    <p:commandButton value="Keresés" action="#{ugyfel.keresesNev}" onclick="PF('dlg2').show();" update=":form:data1" />
+                </br>
+            </div>
+            
+            <p:dialog widgetVar="dlg2" modal="true">
+                <p:dataTable id="data1" value="#{ugyfel.values1}" var="k">
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">ID</f:facet>  
+                        <h:outputText value="#{k.id}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Név</f:facet>  
+                        <h:outputText value="#{k.nev}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Lackím</f:facet>  
+                        <h:outputText value="#{k.lakcim}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Telefonszám</f:facet>  
+                        <h:outputText value="#{k.telefonszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Szigszám</f:facet>  
+                        <h:outputText value="#{k.szigszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Státusz</f:facet>  
+                        <h:outputText value="#{k.statusz}"/>  
+                    </p:column> 
+                </p:dataTable>
+                
+            </p:dialog>
+            
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:outputLabel>Szigszám:</p:outputLabel>
+                </br>
+            </div>
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:inputText value="#{ugyfel.szigszam}"/>
+                </br>
+            </div>
+            <div style="text-align: center">
+                <br>
+                    <p:commandButton value="Keresés" action="#{ugyfel.keresesSzigszam}" onclick="PF('dlg3').show();" update=":form:data2" />
+                </br>
+            </div>
+            
+            <p:dialog widgetVar="dlg3" modal="true">
+                <p:dataTable id="data2" value="#{ugyfel.values2}" var="k">
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">ID</f:facet>  
+                        <h:outputText value="#{k.id}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Név</f:facet>  
+                        <h:outputText value="#{k.nev}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Lackím</f:facet>  
+                        <h:outputText value="#{k.lakcim}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Telefonszám</f:facet>  
+                        <h:outputText value="#{k.telefonszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Szigszám</f:facet>  
+                        <h:outputText value="#{k.szigszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Státusz</f:facet>  
+                        <h:outputText value="#{k.statusz}"/>  
+                    </p:column> 
+                </p:dataTable>  
+            </p:dialog>
+            
+        </h:form>
+    </h:body>
+</html>
+

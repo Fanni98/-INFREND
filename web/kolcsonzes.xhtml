@@ -1,55 +1,151 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml"  
-xmlns:h="http://xmlns.jcp.org/jsf/html"  
-xmlns:f="http://xmlns.jcp.org/jsf/core"
-xmlns:p="http://primefaces.org/ui">  
-<h:head>  
-    <title>Kölcsönzések</title>   
-</h:head>  
-<h:body>  
-    <h:form> 
-    
-        <center><h2><h:outputText value="Kölcsönzések"/></h2> </center>  
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>  
+        <title>Kölcsönzések</title>   
+    </h:head>  
+    <h:body style="background-color: #173F5F">  
+        <h:form id="form">  
+            <h2 style="color:white;text-align: center"><p:outputLabel value="Kölcsönzések"/></h2> 
+            
+            <p:dataTable binding="#{table}" value="#{kolcsonzes.kolcsonzesLista()}" var="u">   
+                
+                <p:column style="text-align: center; background-color: #F6D55C">  
+                    <f:facet name="header">Ügyfél ID</f:facet>  
+                    <h:outputText value="#{u.uid}"/>  
+                </p:column>  
+                <p:column style="text-align: center; background-color: #F6D55C">  
+                    <f:facet name="header">DVD sorszáma</f:facet>  
+                    <h:outputText value="#{u.usorszam}"/>  
+                </p:column>  
+                <p:column style="text-align: center; background-color: #F6D55C">  
+                    <f:facet name="header">Kölcsönzés dátuma</f:facet>  
+                    <h:outputText value="#{u.mikortol}"/>  
+                </p:column>  
+                <p:column style="text-align: center; background-color: #ED553B">  
+                    <f:facet name="header">Visszahoz</f:facet>  
+                    <p:commandButton action = "#{kolcsonzes.delete(u.usorszam)}" value="Töröl" /> 
+                </p:column>  
+            </p:dataTable> 
+            <div style="text-align: center">
+                <br>
+                    <p:commandButton action = "ujkolcsonzes.xhtml?faces-redirect=true" value="Új kölcsönzés"></p:commandButton>
+                </br>
+            </div>
+            
+            
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:outputLabel>Ügyfél ID:</p:outputLabel>
+                </br>
+            </div>
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:inputText value="#{ugyfel.id}"/>
+                </br>
+            </div>
+            <div style="text-align: center">
+                <br>
+                    <p:commandButton value="Kereses" action="#{ugyfel.keresesId}" onclick="PF('dlg1').show();" update=":form:data" />
+                </br>
+            </div>
+            
+            <p:dialog widgetVar="dlg1" modal="true">
+                <p:dataTable id="data" value="#{ugyfel.values}" var="k">
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">ID</f:facet>  
+                        <h:outputText value="#{k.id}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Név</f:facet>  
+                        <h:outputText value="#{k.nev}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Lackím</f:facet>  
+                        <h:outputText value="#{k.lakcim}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Telefonszám</f:facet>  
+                        <h:outputText value="#{k.telefonszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Szigszám</f:facet>  
+                        <h:outputText value="#{k.szigszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Státusz</f:facet>  
+                        <h:outputText value="#{k.statusz}"/>  
+                    </p:column> 
+                </p:dataTable>
+            </p:dialog>
+            
+            
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:outputLabel>DVD sorszáma:</p:outputLabel>
+                </br>
+            </div>
+            <div style="text-align: center;color: white">
+                <br>
+                    <p:inputText value="#{dvd.sorszam}"/>
+                </br>
+            </div>
+            <div style="text-align: center">
+                <br>
+                    <p:commandButton value="Kereses" action="#{dvd.keresSorszam}" onclick="PF('dlg2').show();" update=":form:data1" />
+                </br>
+            </div>
+            
+            <p:dialog widgetVar="dlg2" modal="true">
+                <p:dataTable id="data1" value="#{dvd.values}" var="k">
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Sorszám</f:facet>  
+                        <h:outputText value="#{k.sorszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Cím</f:facet>  
+                        <h:outputText value="#{k.cim}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Beszerzési dátum</f:facet>  
+                        <h:outputText value="#{k.beszerzesDatum}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center; background-color: #F6D55C">  
+                        <f:facet name="header">Státusz</f:facet>  
+                        <h:outputText value="#{k.statusz}"/>  
+                    </p:column>  
+                </p:dataTable>
+            </p:dialog>
+        </h:form> 
+        <h:form>
+            
+            <br>
+                <p:dataTable binding="#{table1}" value="#{dvd.cimSorszam()}" var="d" >  
+                    <p:column style="text-align: center;background-color: #F6D55C">  
+                        <f:facet name="header">Sorszám</f:facet>  
+                        <h:outputText value="#{d.sorszam}"/>  
+                    </p:column>  
+                    <p:column style="text-align: center;background-color: #F6D55C">  
+                        <f:facet name="header">Cím</f:facet>  
+                        <h:outputText value="#{d.cim}"/>  
+                    </p:column>
+                    <p:column style="text-align: center;background-color: #F6D55C">  
+                        <f:facet name="header">Státusz</f:facet>  
+                        <h:outputText value="#{d.statusz}"/>  
+                    </p:column>
+                    <p:column style="text-align: center; background-color: #3CAEA3">  
+                        <f:facet name="header">Felszabadít</f:facet>  
+                        <p:commandButton action = "#{dvd.statuszSzabad(d.sorszam)}" value="Vissza"></p:commandButton>  
+                    </p:column>
+                </p:dataTable>
+            </br>
+            
+        </h:form>
         
-        <p:dataTable binding="#{table}" value="#{kolcsonzes.kolcsonzesLista()}" var="k" >  
-            <p:column>  
-                <f:facet name="header">Ügyfél ID</f:facet>  
-                <h:outputText value="#{k.id}"/>  
-            </p:column>  
-            <p:column>  
-                <f:facet name="header">DVD sorszáma</f:facet>  
-                <h:outputText value="#{k.sorszam}"/>  
-            </p:column>  
-            <p:column>  
-                <f:facet name="header">Kölcsönzés időpontja</f:facet>  
-                <h:outputText value="#{k.mikortol}"/>  
-            </p:column>  
-        </p:dataTable>
-
-        <p:dataTable binding="#{table1}" value="#{dvd.cimSorszam()}" var="k"   >  
-            <p:column>  
-                <f:facet name="header">Sorszám</f:facet>  
-                <h:outputText value="#{k.sorszam}"/>  
-            </p:column>  
-            <p:column>  
-                <f:facet name="header">Cím</f:facet>  
-                <h:outputText value="#{k.cim}"/>  
-            </p:column>  
-        </p:dataTable>
-    
-        <p:dataTable binding="#{table2}" value="#{ugyfel.idNev()}" var="k">  
-            <p:column>  
-                <f:facet name="header">ID</f:facet>  
-                <h:outputText value="#{k.id}"/>  
-            </p:column>  
-            <p:column>  
-                <f:facet name="header">Név</f:facet>  
-                <h:outputText value="#{k.nev}"/>  
-            </p:column>  
-        </p:dataTable>
-    
-    </h:form>  
-</h:body>  
+        
+    </h:body>  
 </html>
 

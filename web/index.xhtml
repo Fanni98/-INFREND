@@ -1,24 +1,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml"  
-xmlns:h="http://xmlns.jcp.org/jsf/html"  
-xmlns:f="http://xmlns.jcp.org/jsf/core"
-xmlns:p="http://primefaces.org/ui">  
-<h:head>  
-    <title>Ügyfelek</title>  
-</h:head>  
-<h:body>  
-    <h:form>
-   
-        <p:commandButton action = "ugyfel.xhtml?faces-redirect=true" value="Ügyfelek"></p:commandButton> 
-
-        <p:commandButton action = "create.xhtml?faces-redirect=true" value="Új ügyfél hozzáadása" ></p:commandButton>  
-
-        <p:commandButton action = "dvd.xhtml?faces-redirect=true" value="Filmek" ></p:commandButton>
-
-        <p:commandButton action = "kolcsonzes.xhtml?faces-redirect=true" value="Kölcsönzések listája"></p:commandButton>
-        
-    </h:form>
-</h:body>  
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>  
+        <title>Kölcsönző</title>  
+    </h:head>  
+    <h:body style="background-color: #173F5F">  
+        <h:form>
+            
+            <p:commandButton action = "ugyfel.xhtml?faces-redirect=true" value="Ügyfelek"></p:commandButton> 
+            
+            <p:commandButton action = "create.xhtml?faces-redirect=true" value="Új ügyfél hozzáadása" ></p:commandButton>  
+            
+            <p:commandButton action = "dvd.xhtml?faces-redirect=true" value="Filmek" ></p:commandButton>
+            
+            <p:commandButton action = "kolcsonzes.xhtml?faces-redirect=true" value="Kölcsönzések "></p:commandButton>
+            
+            <p:commandButton action = "keres.xhtml?faces-redirect=true" value="Keres"></p:commandButton>
+            
+            
+            <div>
+                <br>
+                    <br>
+                        <br>
+                            <center> <h:graphicImage value="/videoteka.png" width="400" height="400" style="margin-left: auto;margin-right: auto"/></center>
+                        </br>
+                    </br>
+                </br>
+            </div>
+            
+            
+        </h:form>
+    </h:body>  
 </html>
 
